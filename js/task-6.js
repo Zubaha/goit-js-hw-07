@@ -6,17 +6,16 @@ function createBoxes(amount) {
   const boxesContainer = document.querySelector('#boxes');
   boxesContainer.innerHTML = '';
   const baseSize = 30;
-  const fragment = document.createDocumentFragment();
+  let boxesHTML = '';
 
   for (let i = 0; i < amount; i++) {
-    const box = document.createElement('div');
-    box.style.width = `${baseSize + i * 10}px`;
-    box.style.height = `${baseSize + i * 10}px`;
-    box.style.backgroundColor = getRandomHexColor();
-    fragment.appendChild(box);
+    const width = baseSize + i * 10;
+    const height = baseSize + i * 10;
+    const color = getRandomHexColor();
+    boxesHTML += `<div style="width: ${width}px; height: ${height}px; background-color: ${color};"></div>`;
   }
 
-  boxesContainer.appendChild(fragment);
+  boxesContainer.innerHTML = boxesHTML;
 }
 
 function destroyBoxes() {
